@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://q106vcbbps6i"]
+
+[ext_resource type="PackedScene" uid="uid://64nwxfa3stbu" path="res://objetos/cacto.fbx" id="1_hpdq1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_banxu"]
+size = Vector3(6.923073, 13.392563, 6.4077454)
+
+[node name="cactoShape" type="StaticBody3D"]
+
+[node name="cacto" parent="." instance=ExtResource("1_hpdq1")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5248909, 6.8680363, 0)
+shape = SubResource("BoxShape3D_banxu")

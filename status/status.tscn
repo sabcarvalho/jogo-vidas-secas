@@ -1,0 +1,106 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkbbcevjr773q"]
+
+[ext_resource type="PackedScene" uid="uid://66sqojnnrkvf" path="res://status/progress_bar.tscn" id="1_0xq7x"]
+[ext_resource type="Script" uid="uid://bihkl6ledrfn8" path="res://scripts/status.gd" id="1_xysbv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wyr4f"]
+resource_local_to_scene = true
+bg_color = Color(0.27387273, 0.27387276, 0.27387264, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.21864411, 0.3525749, 0.87062687, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xed3"]
+resource_local_to_scene = true
+bg_color = Color(0.032235377, 0.45741755, 0.8382261, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.20784314, 0.14117648, 0.9882353, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xysbv"]
+resource_local_to_scene = true
+bg_color = Color(0.27387273, 0.27387276, 0.27387264, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6448625, 0.16710618, 0.18146172, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bu7yl"]
+resource_local_to_scene = true
+bg_color = Color(0.7039336, 0.23169443, 0.17633015, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.43862018, 0.06572333, 0.09884515, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="Status" type="Control" node_paths=PackedStringArray("sede_bar", "calor_bar")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_xysbv")
+sede_bar = NodePath("VBoxContainer/Sede/ProgressBar")
+calor_bar = NodePath("VBoxContainer/Calor/ProgressBar")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sede" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Sede"]
+layout_mode = 2
+text = "Sede"
+
+[node name="ProgressBar" parent="VBoxContainer/Sede" instance=ExtResource("1_0xq7x")]
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_wyr4f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0xed3")
+fill_mode = 0
+
+[node name="Calor" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Calor"]
+layout_mode = 2
+text = "Calor"
+
+[node name="ProgressBar" parent="VBoxContainer/Calor" instance=ExtResource("1_0xq7x")]
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_xysbv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bu7yl")
+value = 0.0
+fill_mode = 0
+
+[node name="SedeTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="CalorTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="SedeTimer" to="." method="_on_sede_timer_timeout"]
+[connection signal="timeout" from="CalorTimer" to="." method="_on_calor_timer_timeout"]

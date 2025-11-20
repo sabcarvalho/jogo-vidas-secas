@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://c52po48e7opr1"]
+
+[ext_resource type="Script" uid="uid://ba1q0l2tnwu1l" path="res://scripts/fabiano.gd" id="1_tgnbb"]
+[ext_resource type="PackedScene" uid="uid://dlr61vdx5wben" path="res://personagens/fabiano/fabiano-skin.tscn" id="2_tgnbb"]
+[ext_resource type="PackedScene" uid="uid://dkbbcevjr773q" path="res://status/status.tscn" id="4_0gp66"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j47e8"]
+radius = 1.4863281
+height = 10.082764
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qqbl5"]
+
+[node name="Fabiano" type="CharacterBody3D" node_paths=PackedStringArray("hud", "canvas")]
+script = ExtResource("1_tgnbb")
+hud = NodePath("CanvasLayer/Status")
+canvas = NodePath("CanvasLayer")
+
+[node name="fabiano" parent="." instance=ExtResource("2_tgnbb")]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.1937003, 0)
+shape = SubResource("CapsuleShape3D_j47e8")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.8462304, -0.5328172, 0, 0.5328172, 0.8462304, 0, 6.071133, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+shape = SubResource("SphereShape3D_qqbl5")
+spring_length = 20.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+unique_name_in_owner = true
+far = 1000.27
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Status" parent="CanvasLayer" node_paths=PackedStringArray("fabiano") instance=ExtResource("4_0gp66")]
+offset_left = 7.0
+offset_top = 6.0
+offset_right = 163.0
+offset_bottom = 79.0
+fabiano = NodePath("../..")

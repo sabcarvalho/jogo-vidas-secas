@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnwxqivf5w8m3"]
+
+[ext_resource type="PackedScene" uid="uid://dyrhmoihfdlg" path="res://objetos/poco.fbx" id="1_bd4ol"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wa4m2"]
+size = Vector3(7.118305, 4.4178467, 8.660828)
+
+[node name="Poço" type="StaticBody3D"]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.565, 0, 0, 0, 0.925, 0, 0, 0, 0.325, 0.42878723, 1.7089233, -0.14181519)
+shape = SubResource("BoxShape3D_wa4m2")
+
+[node name="poco-obj" parent="." instance=ExtResource("1_bd4ol")]
+transform = Transform3D(0.8630167, 0, -0.50517553, 0, 1, 0, 0.50517553, 0, 0.8630167, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.42878723, 1.7089233, -0.14181519)
+shape = SubResource("BoxShape3D_wa4m2")

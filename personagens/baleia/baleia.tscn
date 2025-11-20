@@ -1,0 +1,83 @@
+[gd_scene load_steps=17 format=3 uid="uid://6gekp4yr6ltm"]
+
+[ext_resource type="Script" uid="uid://cd8bf3bdu3bc" path="res://scripts/baleia.gd" id="1_fbqxg"]
+[ext_resource type="ArrayMesh" uid="uid://i50pi3jifxtp" path="res://objetos/baleia.obj" id="1_qhf32"]
+[ext_resource type="AnimationLibrary" uid="uid://ce71uqqkqxc6h" path="res://personagens/baleia/baleia.res" id="3_damqc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w5d4n"]
+transparency = 1
+albedo_color = Color(0.75686276, 0.40392157, 0.18431373, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vkx5j"]
+transparency = 4
+albedo_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojwm3"]
+transparency = 4
+albedo_color = Color(0.67058825, 0.30980393, 0.1882353, 0)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_damqc"]
+animation = &"desable"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fbqxg"]
+animation = &"fade_in"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w5d4n"]
+animation = &"fade_out"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qhf32"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w5d4n"]
+xfade_time = 2.0
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vkx5j"]
+advance_mode = 2
+advance_condition = &"out"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ns2ln"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4sbpo"]
+advance_mode = 2
+advance_condition = &"reset"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_41i37"]
+xfade_time = 2.0
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_vkx5j"]
+states/End/position = Vector2(996, 100)
+states/Start/position = Vector2(104, 100)
+states/desable/node = SubResource("AnimationNodeAnimation_damqc")
+states/desable/position = Vector2(265, 100)
+states/fade_in/node = SubResource("AnimationNodeAnimation_fbqxg")
+states/fade_in/position = Vector2(441, 39)
+states/fade_out/node = SubResource("AnimationNodeAnimation_w5d4n")
+states/fade_out/position = Vector2(823, 100)
+states/idle/node = SubResource("AnimationNodeAnimation_qhf32")
+states/idle/position = Vector2(629, 39)
+transitions = ["fade_in", "idle", SubResource("AnimationNodeStateMachineTransition_w5d4n"), "idle", "fade_out", SubResource("AnimationNodeStateMachineTransition_vkx5j"), "Start", "desable", SubResource("AnimationNodeStateMachineTransition_ns2ln"), "desable", "fade_in", SubResource("AnimationNodeStateMachineTransition_4sbpo"), "fade_out", "desable", SubResource("AnimationNodeStateMachineTransition_41i37")]
+
+[node name="Baleia" type="Node3D"]
+script = ExtResource("1_fbqxg")
+
+[node name="BaleiaMesh" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_qhf32")
+surface_material_override/0 = SubResource("StandardMaterial3D_w5d4n")
+surface_material_override/1 = SubResource("StandardMaterial3D_vkx5j")
+surface_material_override/2 = SubResource("StandardMaterial3D_ojwm3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": ExtResource("3_damqc")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+unique_name_in_owner = true
+root_node = NodePath("%AnimationTree/..")
+tree_root = SubResource("AnimationNodeStateMachine_vkx5j")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/out = false
+parameters/conditions/reset = false

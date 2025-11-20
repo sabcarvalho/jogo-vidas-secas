@@ -1,0 +1,22 @@
+soldado: Olha só quem anda por aqui… ainda respirando?
+soldado: Você e sua família… sempre rastejando. Sempre pedindo.\
+É até engraçado.
+[signal arg="player"]
+player: [i] Não vale a pena… mas dói. [/i]
+- Abaixar a Cabeça
+	set {aceitar} = true
+	[signal arg="aceitou"]
+- Enfrentar o Soldado
+	set {aceitar} = false
+	[signal arg="enfrentou"]
+if {aceitar} == true:
+	[signal arg="player"]
+	player: [i][Silêncio][/i]
+	[signal arg="soldado"]
+	soldado: É isso que você é. Um bicho manso.
+else:
+	[signal arg="player"]
+	Fabiano não foge.
+	[signal arg="soldado"]
+	soldado: Hah… péssima escolha.
+[signal arg="fim"]

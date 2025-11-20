@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://buhqcmo7f3ibq"]
+
+[ext_resource type="Script" uid="uid://usfd8nrvbrrc" path="res://scripts/npc.gd" id="1_nbd8o"]
+[ext_resource type="PackedScene" uid="uid://b0u152faf0li4" path="res://personagens/sinha vitoria/sinha_vitoria-skin.tscn" id="2_nbd8o"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nbd8o"]
+radius = 1.1220703
+height = 8.185547
+
+[node name="SinhaVitoria" type="CharacterBody3D" node_paths=PackedStringArray("skin")]
+script = ExtResource("1_nbd8o")
+skin = NodePath("sinha-vitoria")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8573499, 0)
+shape = SubResource("CapsuleShape3D_nbd8o")
+
+[node name="sinha-vitoria" parent="." instance=ExtResource("2_nbd8o")]

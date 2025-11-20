@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://yy1w7hdntr0o"]
+
+[ext_resource type="PackedScene" uid="uid://ddk3jfmk1wnda" path="res://objetos/arvore.fbx" id="1_qfuww"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w7equ"]
+size = Vector3(0.39941406, 1, 0.5363159)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wppiw"]
+radius = 2.236414
+
+[node name="Arvore" type="StaticBody3D"]
+
+[node name="arvore" parent="." instance=ExtResource("1_qfuww")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018066406, 0.4767664, 0.0051574707)
+shape = SubResource("BoxShape3D_w7equ")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.928938, 0)
+shape = SubResource("SphereShape3D_wppiw")
