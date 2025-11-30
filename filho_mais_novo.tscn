@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dk2issvpankuq"]
+
+[ext_resource type="PackedScene" uid="uid://dub7uljrnclcr" path="res://meninomaisnovo.tscn" id="1_0rx18"]
+[ext_resource type="Script" uid="uid://usfd8nrvbrrc" path="res://scripts/npc.gd" id="1_1leby"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0rx18"]
+radius = 0.9248047
+height = 5.2929688
+
+[node name="FilhoMaisNovo" type="CharacterBody3D" node_paths=PackedStringArray("skin")]
+script = ExtResource("1_1leby")
+skin = NodePath("meninomaisnovo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8466797, 0)
+shape = SubResource("CapsuleShape3D_0rx18")
+
+[node name="meninomaisnovo" parent="." instance=ExtResource("1_0rx18")]

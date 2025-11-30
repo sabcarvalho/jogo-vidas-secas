@@ -4,6 +4,7 @@ class_name Controlador extends Node
 @export var soldado : Soldado
 @export var fade : AnimationPlayer
 @onready var fabiano : Fabiano = %Fabiano
+@onready var som_tiro = %som_tiro
 
 @export_group("Cameras")
 @export var camera1 : Camera3D
@@ -52,10 +53,13 @@ func _on_dialogic_signal(arg : String):
 		else:
 			#final ruim
 			fade.play("fade_out") #escurece a tela
-
+			bad_ending()
 #funcao chamada pelo soldado ao chegar no ponto 2
 func good_ending():
 	#fabiano anda ate o ponto 3
 	fabiano.set_walk()
 	#mudanca de camera
 	camera5.make_current()
+	
+func bad_ending():
+	som_tiro.play()
