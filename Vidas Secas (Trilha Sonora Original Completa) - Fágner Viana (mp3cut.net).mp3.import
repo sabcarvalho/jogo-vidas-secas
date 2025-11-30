@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bhh6w8tbevy20"
+path="res://.godot/imported/Vidas Secas (Trilha Sonora Original Completa) - Fágner Viana (mp3cut.net).mp3-b5eaa3c0799a2bb0e3ea114abae98c2f.mp3str"
+
+[deps]
+
+source_file="res://Vidas Secas (Trilha Sonora Original Completa) - Fágner Viana (mp3cut.net).mp3"
+dest_files=["res://.godot/imported/Vidas Secas (Trilha Sonora Original Completa) - Fágner Viana (mp3cut.net).mp3-b5eaa3c0799a2bb0e3ea114abae98c2f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
