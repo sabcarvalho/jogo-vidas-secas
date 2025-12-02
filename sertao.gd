@@ -11,7 +11,7 @@ func _ready() -> void:
 	pause_menu.hide()
 	
 	if game_messages:
-		game_messages.hide_message()
+		game_messages.hide_text()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

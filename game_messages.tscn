@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://opce4bthvjuj"]
+[gd_scene load_steps=3 format=3 uid="uid://opce4bthvjuj"]
+
+[ext_resource type="Script" uid="uid://bar3cig7tu5tq" path="res://game_messages.gd" id="1_6bm17"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ltlpd"]
 font_size = 32
@@ -12,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6bm17")
 
 [node name="MessageLabel" type="Label" parent="."]
 layout_mode = 1

@@ -119,8 +119,8 @@ func _physics_process(delta: float) -> void:
 #funcao chamada ao entrar na area de sombra
 func _on_healing_calor_body_entered(body: Node3D) -> void:
 	if body == self: 
-		hud.sedeDecrease = 1
-		hud.calorIncrease = -2
+		hud.sedeDecrease = 0 # para de sentir sede na sombra
+		hud.calorIncrease = -5
 
 #funcao chamada ao sair da area de sombra
 func _on_healing_calor_body_exited(body: Node3D) -> void:
@@ -131,8 +131,8 @@ func _on_healing_calor_body_exited(body: Node3D) -> void:
 #funcao chamada ao entrar na area do poço
 func _on_area_agua_body_entered(body: Node3D) -> void:
 	if body == self:
-		hud.sedeDecrease = -2
-		hud.calorIncrease = 1
+		hud.sedeDecrease = -10
+		hud.calorIncrease = 0 # o calor para de subir
 
 #funcao chamada ao sair da area do poço
 func _on_area_agua_body_exited(body: Node3D) -> void:
